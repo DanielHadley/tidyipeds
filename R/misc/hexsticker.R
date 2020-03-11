@@ -4,7 +4,7 @@ require(hexSticker)
 
 img <- "https://www.naicu.edu/getmedia/4c12bbda-f945-4b04-81ea-6065474e69c0/IPEDS-2.png"
 
-sticker(img, package = "tidyipeds", filename = "~/temp/hexsticker.png",
+sticker(img, package = "tidyipeds",
         h_fill = "white",
         p_color = "black",
         p_family = "Roboto",
