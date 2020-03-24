@@ -11,7 +11,6 @@
 #' @import dplyr
 #' @importFrom magrittr %>%
 #'
-
 get_acs_combo <- function(table = NULL, year = 2018, geography, state = NULL, county = NULL, survey = "acs5", which.races = NULL, use.parallel = T) {
   if (!requireNamespace("dplyr", quietly = TRUE)) {
     stop("Package \"dplyr\" needed for this function to work. Please install it.",

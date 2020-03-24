@@ -4,19 +4,13 @@
 #' @importFrom magrittr %>%
 #' @import stringr
 
-# get_acs(table = "B02001", geography = "county", state = c("UT"), output = "wide")
 
-
-# xxx <- get_acs_combo(table = "B15001", year = 2017:2018, survey = "acs5", geography = "state", state = c("UT", "VT"))
-#
-#
-# lablst <- xxx %>% select(level, levlab, label)
 
 # gives list of levels of variables in table, tehe input might be better to come from acsvars and not the downloaded table.
 var_levels <- function(x, col){
   #unnest data
-  xun <- x %>% select(col) %>%
-    tidyr::unnest(cols = col)
+  xun <- x %>% select({{col}}) %>%
+    tidyr::unnest(cols = {{col}})
 
   xun <- xun %>% filter(str_detect(str_to_lower(str_squish(levlab)), "^total$", negate = T))
 
@@ -48,32 +42,6 @@ widen_vars <- function(x, col, ...){
   x %>% filter(!!!ex_args)
 }
 
-# debugonce(widen_vars)
-# xxx %>%
-# var_levels() %>%
-# widen_vars(var2 = "18 to 24 years", var3 = "Less than 9th grade")
-#
-# widen_vars(xxx, var3 = "Less than 9th grade")
-# widen_vars(xxx)
-
-# tibble representing the data to join to (just fips codes)
-
-
-xxx <- get_acs_combo(table = "B15001", year = 2017:2018, survey = "acs5", geography = "state", state = c("UT", "TX", "MA"), use.parallel = F)
-
-
-tj <- tidycensus::fips_codes %>%
-  filter(state %in% c("TX", "UT", "MA")) %>%
-  tidyr::unite(geoid, state_code, county_code, sep = "" ) %>%
-  select(geoid, state) %>% as_tibble()
-
-ttj<- cross_df(list(geoid = tj$geoid, year = 2017:2018)) %>%
-  full_join(tj) %>%
-  group_by(state) %>%
-  sample_frac(.2) %>%
-  ungroup()
-
-#ttj is used as a practice data set to join on.
 
 
 ipeds_join <- function(data, join_col, table, year, geography, use.parallel = T){
@@ -82,12 +50,12 @@ ipeds_join <- function(data, join_col, table, year, geography, use.parallel = T)
 
   # get a vector of places that need to be queried. on 03/14/20 this has limited functionality since
   # it doesnt account for use case in which some one is joining data on a by county level but wants state data for the states
-  # in which those counties reside.
+  # in which those counties reside. Maybe create seperate params for joining geography and data geography (eg: joining is on county geoids but the data is at the state level).
   if(geography == "state" && max(nchar(fips_vec)) == 2){
     jargs$state <- fips_vec
   } else if (geography == "county" && max(nchar(fips_vec == 5))) {
-  # jargs$state <- substr(fips_vec, 1, 2) %>% unique() %>% as.integer()
-  # jargs$county <- substr(fips_vec, 3,5) %>% unique() %>% as.integer()
+    # jargs$state <- substr(fips_vec, 1, 2) %>% unique() %>% as.integer()
+    # jargs$county <- substr(fips_vec, 3,5) %>% unique() %>% as.integer()
     jargs$county <- fips_vec
   }
 
@@ -98,18 +66,3 @@ ipeds_join <- function(data, join_col, table, year, geography, use.parallel = T)
 
   joined_data <- left_join(data, acs_data2, by = c(setNames("geoid", join_col), "year"))
 }
-
-
-xx <- ipeds_join(ttj, join_col = "geoid", "B15001", year = 2017:2018, geography = "county")
-
-xx %>%
-var_levels("B15001") %>%
-  widen_vars(var1 = )
-
-
-# join_acs <- function(.data, table, year, ...,  join_col){
-#   args <- list(...)
-#   args$table <- table
-#   .data %
-#
-# }
