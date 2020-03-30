@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# tidyipeds <img src="tidyipeds.png" align="right" height = "15%" width = "15%" />
+# tidyipeds <img src="tidyipeds.png" align="right" height = "20%" width = "20%" />
 
 -----
 
