@@ -28,7 +28,17 @@ acsvars <- bind_rows("acs1" = get_acs_vars(2010:2018, "acs1"),
                      .id = "survey")
 
 
+# add columns which indicate which table a variable belongs to and whether it has racial iterations and if it has a non racial version as well.
+x <- acsvars %>% mutate(table_num_long = substr(variable, 1, 7))
+y <- acsvars %>%
+  mutate(table_num_long = substr(variable, 1, 7)) %>%
+  distinct(table_num_long) %>%
+  mutate(table_num = substr(table_num_long, 1, 6)) %>%
+  add_count(table_num) %>%
+  mutate(has_race_versions = ifelse(n >= 9 , T, F),
+         has_non_race_versions = ifelse(n != 9, T, F))
 
+acsvars <- left_join(x,y) %>% filter(str_detect(variable, "PR", negate = T)) %>% select(-c(table_num_long, n))
 
 # make a table that tells is_race_table -----------------------------------
 
