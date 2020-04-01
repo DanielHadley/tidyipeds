@@ -45,9 +45,13 @@ acsvars <- left_join(x,y) %>%
   mutate(is_race_table_var = any(str_detect(substr(variable, 2, nchar(variable)), LETTERS[1:9]))) %>%
   ungroup()
 
+acsvars_acs5 <- filter(acsvars, survey == "acs5")
+acsvars_acs1 <- filter(acsvars, survey == "acs1")
 
+usethis::use_data(acsvars_acs5)
+usethis::use_data(acsvars_acs1)
 
-# make a table that tells is_race_table -----------------------------------
+# might use later -----------------------------------
 
 
 # # make a table that give the base table name, and logical vectors to say whether it is a race table and or a pr table
@@ -64,4 +68,3 @@ acsvars <- left_join(x,y) %>%
 #          is_pr_table = any(is_pr_table)) %>%
 #   distinct(is_race_table, is_pr_table, table_name)
 
-usethis::use_data(acsvars)
