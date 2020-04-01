@@ -107,10 +107,29 @@ get_acs_combo <- function(table = NULL, year = 2018, geography, state = NULL, co
 
 
 # gives list of levels of variables in table, tehe input might be better to come from acsvars and not the downloaded table.
-var_levels <- function(x, col){
-  #unnest data
-  xun <- x %>% select({{col}}) %>%
-    tidyr::unnest(cols = {{col}})
+var_levels <- function(table, year, survey, race.iteration = F){
+  if(survey == "acs5") load("./data/acsvars_acs5.rda")
+  if(survey == "acs1") load("./data/acsvars_acs1.rda")
+  env <- environment()
+  if(exists("acsvars_acs5")) {
+    acsvars <- acsvars_acs5
+    rm(acsvars_acs5)
+  } else if (exists("acsvars_acs1")) {
+    acsvars <- acsvars_acs1
+    rm(acsvars_acs1)
+    }
+  xun <- acsvars %>%
+    filter(table_num == {{table}}, year == {{year}}, survey == {{survey}}) %>%
+    {if(T){  # the if is just bc for some reason it made the return(.) work
+      assign("table_concept", filter(., is_race_table_var == F) %>% pull(concept) %>% head(1) %>% str_to_upper(), envir = env)
+      return(.)}
+      } %>%
+      filter(., is_race_table_var == race.iteration) %>% # makes sure to get the right variable set bc race and non race tables differ sometimes
+    {if(T){
+      assign("race_message_flag", any(.$has_race_versions), envir = env)
+      return(.)}
+    }%>%
+    distinct(levlab, level)
 
   xun <- xun %>% filter(str_detect(str_to_lower(str_squish(levlab)), "^total$", negate = T))
 
@@ -119,13 +138,18 @@ var_levels <- function(x, col){
 
   u_vars <- purrr::map(lev_split, ~unique(.$levlab))
 
-  message("Choose which values of each variable you'd like to include, for example:", "\n", glue("widen_vars(.data, var1 ='{u_vars$var1[1]}', var2 = c('{u_vars$var2[1]}', '{u_vars$var2[2]}'), etc.)"))
+  if(race_message_flag & isFALSE(race.iteration)) {
+    race_table_mesage <- "\n\nThis table also has iterations for distinct racial groups.\nTo see the variable levels for this group of tables specify `race.iteration = TRUE`"
+    }else{race_table_mesage <- ""
+    }
+
+  message(glue("TABLE CONCEPT: {table_concept}"),"\nChoose which values of each variable you'd like to include, for example:", "\n", glue("widen_vars(.data, var1 ='{u_vars$var1[1]}', var2 = c('{u_vars$var2[1]}', '{u_vars$var2[2]}'), etc.)"), race_table_mesage)
   print(u_vars)
   invisible(xun)
 }
 
-
-
+# debugonce(var_levels)
+# var_levels("B06009", 2018, "acs5", F)
 #remember to figure out wether to group by county or state
 # if you want to get a 'total' for a certain level (eg. values for all females of any age (in an 'sex by age' dataset ) then specify "females" in the appropriate variable arguement)
 widen_vars <- function(x, col, ...){
