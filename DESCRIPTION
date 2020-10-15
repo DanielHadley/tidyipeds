@@ -2,12 +2,34 @@ Package: tidyipeds
 Title: What the Package Does (One Line, Title Case)
 Version: 0.0.0.9000
 Authors@R: 
-    person(given = "First",
-           family = "Last",
-           role = c("aut", "cre"),
-           email = "first.last@example.com",
-           comment = c(ORCID = "YOUR-ORCID-ID"))
+    c(
+      person(given = "Jonathan",
+             family = "Zadra",
+             role = c("aut", "cre"),
+             email = "jon.zadra@sorensonimpact.com"),
+      person(given = "Sorenson Impact Center", 
+             role = "cph")
+    )
+URL: https://github.com/Sorenson-Impact/tidyipeds
+BugReports: https://github.com/Sorenson-Impact/tidyipeds/issues
 Description: What the package does (one paragraph).
-License: What license it uses
+License: GPL-3
 Encoding: UTF-8
 LazyData: true
+Suggests: 
+    testthat,
+    roxygen2
+Imports: 
+    httr,
+    rvest,
+    janitor,
+    xml2,
+    dplyr,
+    stringr,
+    stringi,
+    lifecycle,
+    tibble,
+    magrittr,
+    rlang (>= 0.1.2)
+RdMacros: lifecycle
+RoxygenNote: 7.1.1

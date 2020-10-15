@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# tidyipeds <img src="tidyipeds.png" align="right" height = "20%" width = "20%" />
+# tidyipeds <img src='man/figures/logo.png' align="right" height="113" />
 
 -----
 
@@ -9,6 +9,13 @@ A tidy solution for using the Integrated Postsecondary Education Data
 System from the National Center for Education Statistics. Includes easy
 integration with the College Scorecard, American Community Survey (ACS),
 and the Urban Institute’s Education Data API.
+
+\=======================
+
+# This package is in early development
+
+This package is not currently functional as it is in the early stages of
+development and basic functionality is still being added.
 
 \=======================
 
@@ -25,7 +32,7 @@ and the Urban Institute’s Education Data API.
 2.  Allow easy joining of American Community Survey (ACS) data and other
     higher ed data (i.e. College Scorecard) to IPEDS data.
 
-3.  Provide acces to the Urban Institute’s Education Data API for IPEDS
+3.  Provide access to the Urban Institute’s Education Data API for IPEDS
     data. This data is curated to allow safer longitudinal analyses,
     however at present it is missing some of the IPEDS surveys, most
     notably financial data. Urban is currently working to add additional
@@ -37,7 +44,7 @@ and the Urban Institute’s Education Data API.
 
 \=======================
 
-# Raw IPEDS data
+\# Raw IPEDS data
 
 There are a number of issues to address in order to take the raw IPEDS
 tables and convert them to a more useful structure. These include:
@@ -51,3 +58,12 @@ tables and convert them to a more useful structure. These include:
 
   - Recoding the categorical variable values from codes to readable
     values.
+
+\======================
+
+## Code of Conduct
+
+Please note that the tidyipeds project is released with a [Contributor
+Code of
+Conduct](https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html).
+By contributing to this project, you agree to abide by its terms.

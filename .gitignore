@@ -29,3 +29,4 @@ vignettes/*.pdf
 .Rproj.user
 .DS_Store
 Tidyipeds.ai
+docs
