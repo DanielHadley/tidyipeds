@@ -30,3 +30,4 @@ vignettes/*.pdf
 .DS_Store
 Tidyipeds.ai
 docs
+ipeds_data
