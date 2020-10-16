@@ -1,3 +1,96 @@
+download_ipeds <- function(survey, years = NULL) {
+
+  pkg_path <- system.file(package = "tidyipeds")
+
+  if(!fs::dir_exists(fs::path(pkg_path, "ipeds_data"))) fs::dir_create(fs::path(pkg_path, "ipeds_data"))
+
+  ipeds_path <- fs::path(pkg_path, "ipeds_data")
+
+  ipeds <- scrape_ipeds_datacenter_files()
+
+
+  ipeds <- ipeds %>%
+  dplyr::mutate(survgroup = stringr::str_remove(data_file, as.character(year)) %>%
+    stringr::str_remove(year_to_fiscal(year))) %>%
+  dplyr::mutate(survgroup = dplyr::case_when(
+    stringr::str_detect(data_file, "GR200_") ~ "GR200",
+    TRUE ~ survgroup
+  )) %>%
+    dplyr::mutate(survgroup = stringr::str_to_lower(survgroup))
+
+  if(!is.null(years)) {
+    ipeds <- ipeds %>%
+      dplyr::filter(year %in% years)
+  }
+
+
+
+
+
+  ipeds %>%
+    dplyr::filter(survgroup == !!survey) %>%
+    split(.$data_file) %>%
+    purrr::walk(function(ip) {
+
+      temp <- fs::path(tempdir(), "ipeds", ip$data_file)
+
+      fs::dir_create(temp)
+
+      cat("\n", crayon::magenta(crayon::bgWhite(ip$data_file)), "\n")
+
+
+      tempdata <- paste0(temp, "/data.zip")
+      temphelp <- paste0(temp, "/help.zip")
+
+      while(!fs::file_exists(tempdata)) {
+        tryCatch(utils::download.file(ip$data_url, tempdata, mode = "wb"), error = function(e) {
+          cat(crayon::white(crayon::bgRed("Error, retrying download...\n")))
+          message(e)
+          fs::file_delete(fs::dir_ls(temp))
+        })
+      }
+
+      utils::unzip(tempdata, exdir = temp)
+
+      is_provisional = !any(fs::dir_ls(temp) %>% stringr::str_detect("_rv|_RV")) #_rv means it's revised, ie final
+
+      file <- if(!is_provisional) fs::dir_ls(temp, glob = "*_rv.csv|*_RV.csv") else fs::dir_ls(temp, glob = "*.csv")
+
+      if(stringr::str_detect(stringr::str_to_lower(basename(file)), "^hd")) {
+        csv <- suppressMessages(readr::read_delim(file, delim = ",", escape_double = F, trim_ws = T, guess_max = 10000, na = c("", "NA", ".")))
+      } else {
+        csv <- suppressMessages(readr::read_csv(file, guess_max = 10000, na = c("", "NA", ".")))
+      }
+
+      rds_name <- file %>%
+        basename() %>%
+        stringr::str_remove_all("_rv|_RV") %>%
+        stringr::str_replace(".csv", ".rds")
+
+      cat("\n", crayon::red("Writing compressed file:", rds_name, "\n"))
+
+      csv %>% readr::write_rds(fs::path(ipeds_path, rds_name), compress = "gz")
+
+      cat("\n", crayon::green("Adding help file...", "\n"))
+
+      utils::download.file(ip$help_url, temphelp, mode = "wb")
+      while(!fs::file_exists(temphelp)) {
+        tryCatch(utils::download.file(ip$help_url, temphelp, mode = "wb"), error = function(e) {
+          cat(crayon::white(crayon::bgRed("Error, retrying download...\n")))
+          message(e)
+          fs::file_delete(fs::dir_ls(temp))
+        })
+      }
+
+      utils::unzip(temphelp, exdir = fs::path(ipeds_path, "helpfiles"))
+
+      fs::dir_delete(temp)
+
+    })
+}
+
+
+
 scrape_ipeds_datacenter_files <- function() {
   url1 <- "https://nces.ed.gov/ipeds/datacenter/login.aspx?gotoReportId=8"
   url2 <- "https://nces.ed.gov/ipeds/datacenter/DataFiles.aspx"
@@ -70,3 +163,4 @@ scrape_ipeds_datacenter_files <- function() {
 
   return(ipeds)
 }
+
