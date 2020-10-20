@@ -1,3 +1,4 @@
+
 download_ipeds <- function(survey, years = NULL) {
 
   pkg_path <- system.file(package = "tidyipeds")
@@ -22,10 +23,6 @@ download_ipeds <- function(survey, years = NULL) {
     ipeds <- ipeds %>%
       dplyr::filter(year %in% years)
   }
-
-
-
-
 
   ipeds %>%
     dplyr::filter(survgroup == !!survey) %>%
@@ -92,14 +89,23 @@ download_ipeds <- function(survey, years = NULL) {
 
 
 scrape_ipeds_datacenter_files <- function() {
+
+  cli::cli_alert_info("Updating local list of IPEDS Datacenter files...")
+
+  pb <- progress_bar$new(total = 100, show_after = 0)
+  pb$tick(0)
+
   url1 <- "https://nces.ed.gov/ipeds/datacenter/login.aspx?gotoReportId=8"
   url2 <- "https://nces.ed.gov/ipeds/datacenter/DataFiles.aspx"
 
   UA <- "Mozilla/5.0 (Windows NT 6.1; rv:75.0) Gecko/20100101 Firefox/75.0"
 
   html <- httr::GET(url1, httr::user_agent(UA))
+  pb$update(2/10)
   html <- httr::GET(url2, httr::user_agent(UA))
+  pb$update(4/10)
   page <- html %>% xml2::read_html()
+  pb$update(6/10)
 
 
   form <- list(
@@ -135,6 +141,8 @@ scrape_ipeds_datacenter_files <- function() {
 
   Result <- httr::POST(url2, body = form, httr::user_agent(UA), Headers, Cookies)
 
+  pb$update(8/10)
+
   ipeds_scrape_raw <- Result %>%
     xml2::read_html() %>%
     rvest::html_node("#contentPlaceHolder_tblResult") %>%
@@ -161,6 +169,53 @@ scrape_ipeds_datacenter_files <- function() {
     ) %>%
     dplyr::select(-programs, -dictionary, -stata_data_file)
 
+  pb$update(1)
+
+  cli::cli_alert_success("Update complete.")
+
   return(ipeds)
 }
+
+update_available_ipeds <- function(force = FALSE) {
+
+  pkg_path <- system.file(package = "tidyipeds")
+
+  if(!fs::dir_exists(fs::path(pkg_path, "ipeds_data"))) fs::dir_create(fs::path(pkg_path, "ipeds_data"))
+
+  ipeds_path <- fs::path(pkg_path, "ipeds_data")
+
+  if(fs::file_exists(fs::path(ipeds_path, "datacenter_scrape.rds")) & !force) {
+
+    existing_date <- fs::file_info(fs::path(ipeds_path, "datacenter_scrape.rds"))$modification_time
+    if(difftime(lubridate::now(), existing_date, units = "weeks") > 4) {
+      cli::cli_alert_warning("The locally stored list of available IPEDS data files is over 1 month old.")
+      ipeds <- scrape_ipeds_datacenter_files()
+      readr::write_rds(ipeds, fs::path(ipeds_path, "datacenter_scrape.rds"))
+      cli::cli_alert_success("Update completed.")
+
+    } else {
+
+      cli::cli_alert_info("Using locally stored list of available IPEDS data files as it was updated within the last month. To force an update, re-run the function with `force = TRUE`")
+
+    }
+  } else {
+
+    ipeds <- scrape_ipeds_datacenter_files()
+    readr::write_rds(ipeds, fs::path(ipeds_path, "datacenter_scrape.rds"))
+
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
