@@ -13,12 +13,13 @@ In 2016-17 the types of collections was expanded to collect information on physi
 }
 
 \section{Glossary}{
-\describe{
-  \item{Total library circulations}{
-  The number of times book and media units are "checked out" from the general and reserve collections. Includes intitial transactions and renewals.
-  }
-  \item{Ongoing commitments to subscriptions}{
-  The expenditures for ongoing subscriptions to serials in all formats, including duplicates, for all outlets. These are publications issued in successive parts, usually at regular intervals, and, as a rule, intended to be continued indefinitely.
-  Serial subscriptions include periodicals, newspapers, annuals (reports, yearbooks, etc.), memoirs, proceedings, and transactions of societies. Includes the costs of electronic serials bought in aggregations and serial packages.
+  \describe{
+    \item{Total library circulations}{
+    The number of times book and media units are "checked out" from the general and reserve collections. Includes intitial transactions and renewals.
+    }
+    \item{Ongoing commitments to subscriptions}{
+    The expenditures for ongoing subscriptions to serials in all formats, including duplicates, for all outlets. These are publications issued in successive parts, usually at regular intervals, and, as a rule, intended to be continued indefinitely.
+    Serial subscriptions include periodicals, newspapers, annuals (reports, yearbooks, etc.), memoirs, proceedings, and transactions of societies. Includes the costs of electronic serials bought in aggregations and serial packages.
+    }
   }
 }
