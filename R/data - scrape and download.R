@@ -7,7 +7,9 @@ download_ipeds <- function(survey, years = NULL) {
 
   ipeds_path <- fs::path(pkg_path, "ipeds_data")
 
-  ipeds <- scrape_ipeds_datacenter_files()
+  update_available_ipeds()
+
+  ipeds <- readr::read_rds(fs::path(ipeds_path, "datacenter_scrape.rds"))
 
 
   ipeds <- ipeds %>%
@@ -176,31 +178,55 @@ scrape_ipeds_datacenter_files <- function() {
   return(ipeds)
 }
 
+#' Update local list of available data center files
+#' @description
+#' \lifecycle{experimental}
+#' This function is primarily internal. It is used to update (or download if it does not exist) a local copy of the data files available from IPEDS data center.  If the local copy is less than 1 month old, it does not update as scraping the data center is time consuming and new files are added only a few times a year.  This behavior can be circumvented by using \code{`force = TRUE`}.  If the local copy is over 1 month old, it is updated.
+#' @param force Logical indicating whether to force an update if local copy is less than 1 month old. Defaults to FALSE
+#' @examples
+#' \dontrun{
+#' update_available_ipeds(force = TRUE)
+#' }
+#' @export
 update_available_ipeds <- function(force = FALSE) {
 
   pkg_path <- system.file(package = "tidyipeds")
 
-  if(!fs::dir_exists(fs::path(pkg_path, "ipeds_data"))) fs::dir_create(fs::path(pkg_path, "ipeds_data"))
+  if (!fs::dir_exists(fs::path(pkg_path, "ipeds_data"))) fs::dir_create(fs::path(pkg_path, "ipeds_data"))
 
   ipeds_path <- fs::path(pkg_path, "ipeds_data")
 
-  if(fs::file_exists(fs::path(ipeds_path, "datacenter_scrape.rds")) & !force) {
+  if (fs::file_exists(fs::path(ipeds_path, "datacenter_scrape.rds")) & !force) {
 
     existing_date <- fs::file_info(fs::path(ipeds_path, "datacenter_scrape.rds"))$modification_time
-    if(difftime(lubridate::now(), existing_date, units = "weeks") > 4) {
+    if (difftime(lubridate::now(), existing_date, units = "weeks") > 4) {
+
       cli::cli_alert_warning("The locally stored list of available IPEDS data files is over 1 month old.")
+
+      old_ipeds <- readr::read_rds(fs::path(ipeds_path, "datacenter_scrape.rds"))
+
       ipeds <- scrape_ipeds_datacenter_files()
+
       readr::write_rds(ipeds, fs::path(ipeds_path, "datacenter_scrape.rds"))
+
       cli::cli_alert_success("Update completed.")
+
+      compare_ipeds_scrape(old_ipeds, ipeds)
 
     } else {
 
-      cli::cli_alert_info("Using locally stored list of available IPEDS data files as it was updated within the last month. To force an update, re-run the function with `force = TRUE`")
+      cli::cli_alert_info("Using locally stored list of available IPEDS data files as it was updated within the last month. To force an update, run  `update_available_ipeds(force = TRUE`)")
 
     }
   } else {
 
     ipeds <- scrape_ipeds_datacenter_files()
+
+    if(force & fs::file_exists(fs::path(ipeds_path, "datacenter_scrape.rds"))) {
+      old_ipeds <- readr::read_rds(fs::path(ipeds_path, "datacenter_scrape.rds"))
+      compare_ipeds_scrape(old_ipeds, ipeds)
+    }
+
     readr::write_rds(ipeds, fs::path(ipeds_path, "datacenter_scrape.rds"))
 
   }
@@ -208,6 +234,34 @@ update_available_ipeds <- function(force = FALSE) {
 }
 
 
+compare_ipeds_scrape <- function(old, new) {
+
+  ipeds_diff <- anti_join(new, old, by = c("year", "survey", "title", "data_file", "rv_title"))
+
+  if(nrow(ipeds_diff) == 0) return(cli::cli_alert_info("The locally stored list of available IPEDS data files matches the online data center. No new surveys or survey revisions have been added.", wrap = T))
+
+  if (nrow(ipeds_diff %>% dplyr::filter(!rv_title)) > 0) {
+    cli::cli_alert_info(cli::rule(left = "New surveys have been added to the data center", line_col = "green"))
+    ipeds_diff %>%
+      dplyr::filter(!rv_title) %>%
+      select(year, survey, title, data_file) %>%
+      print()
+    cli::cat_line()
+  }
+
+  if (nrow(ipeds_diff %>% dplyr::filter(rv_title)) > 0) {
+    cli::cli_alert_info(cli::rule(left = "The following surveys have been updated to include revised files", line_col = "green"))
+    ipeds_diff %>%
+      dplyr::filter(rv_title) %>%
+      select(year, survey, title, data_file) %>%
+      print()
+    cli::cat_line()
+  }
+
+
+  #TODO: Add ability to bring this info up again later in the session?
+
+}
 
 
 
