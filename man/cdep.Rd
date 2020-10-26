@@ -22,3 +22,18 @@ Six digit CIPCODE (XX.NNNN) records will identify which award levels are offered
 
 Two digit CIPCODE (XX) summary records will contain the number of 6-digit CIPCODES under the  2-digit group that are offered by award level and distance education status and CIPCODE (99)  will contain totals for the institution.
 }
+
+\section{Data Releases}{
+Preliminary release data have been edited but are subject to further NCES quality control procedures. Imputed data for nonresponding institutions are not included. These data are used for First Look (Preliminary Data) publications.
+
+Provisional release data have undergone all NCES data quality control procedures. Data are imputed for nonresponding institutions. These data are used for First Look (Provisional Data) publications.
+
+Final release data include revisions to the provisional release data that have been made by institutions during the subsequent data collection year. The final release data can be used when the most up to date data are required; however, these data may not match tables from the First Look reports based on preliminary and provisional data.
+}
+
+\section{Glossary}{
+  \describe{
+  \item{Classification of instrucional Program (CIP) code}{A six-digit code in the form xx.xxxx that identifies instructional  program specialties within educational institutions.}
+  \item{Distance education program}{A program for which all the required coursework for program completion is able to be completed via distance education courses}
+  }
+}
