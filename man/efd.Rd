@@ -83,11 +83,23 @@ Final release data include revisions to the provisional release data that have b
     \item students transferring into the institution at any undergraduate level for the first time.}
   }
   \item{Full-time cohort}{
-   Includes full-time first-time degree/certificate seeking students enrolled at the institution in the fall of the prior year (including those enrolled for the first time the preceding summer term and those whose intent was not known upon entry to the institution).  The full-time cohort for 4-year institutions should only include bachelor degree-seeking students. The student status (full- or part-time) is based on the prior year's fall status, even if this has changed by the current year (e.g., if a student has gone from part-time to full-time, they will be reported as part of the part-time cohort).}
+   Includes full-time first-time degree/certificate seeking students enrolled at the institution in the fall of the prior year (including those enrolled for the first time the preceding summer term and those whose intent was not known upon entry to the institution).  The full-time cohort for 4-year institutions should only include bachelor degree-seeking students.
+
+   The student status (full- or part-time) is based on the prior year's fall status, even if this has changed by the current year (e.g., if a student has gone from part-time to full-time, they will be reported as part of the part-time cohort).}
+   \item{Part-time cohort}{
+   Includes part-time first-time degree/certificate seeking students enrolled at the institution in the fall of the prior year (including those enrolled for the first time the preceding summer term and those whose intent was not known upon entry to the institution).  The part-time cohort for 4-year institutions should only include bachelor degree-seeking students.
+
+   The student status (full- or part-time) should be based on the prior year's fall status, even if this has changed by the current year (e.g., if a student has gone from part-time to full-time, report them as part of the part-time cohort).}
   \item{Full-time adjusted cohort from prior year}{
   Full-time cohort from prior year minus number of exclusions plus the number of Inclusions.}
-  \item{Exclusions}{Students from the cohort or subcohort who left the institution for any of the following reasons: died or were totally and permanently disabled; to serve in the armed forces; to serve with a foreign aid service of the Federal Government, such as the Peace Corps; or to serve on official church missions.
+  \item{Exclusions}{Students from the cohort or subcohort who left the institution for any of the following reasons: died or were totally and permanently disabled; to serve in the armed forces; to serve with a foreign aid service of the Federal Government, such as the Peace Corps; or to serve on official church missions.}
   \item{Inclusions}{The number of first-time degree seeking  study abroad students who were excluded from the prior year first-time full-time cohort but who have re-enrolled at the institution their second year.}
+  \item{Retention rate}{The percent of the (fall cohort from the prior year minus exclusions from the fall cohort) that re-enrolled at the institution as either full- or part-time in the current year}
+  \item{Student-to-faculty ratio}{ Total FTE students not in graduate or professional programs divided by total FTE instructional staff not teaching in graduate or professional programs.}
+  \item{Total FTE students}{Equal to the number of full-time students plus 1/3 the number of part-time students (Fall enrollment component).}
+  \item{Total FTE instructional staff}{Equal to the number of full-time instructional staff to 1/3 the number of part-time instructional staff (Human Resource Component, EAP section).}
+  \item{Instructional staff}{Include employees whose primary function/occupational activity is primarily instruction or instruction/research/public service and are not medical school employees.}
+  \item{Graduate or first-professional students}{Students enrolled in graduate or professional programs such as medicine, law, veterinary, dentistry, social work, or public health, in which faculty teach virtually only graduate-level students (often referred to as "stand-alone" or "independent" programs) are excluded from both full-time and part-time counts.}
   }
 }
 
