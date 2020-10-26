@@ -7,7 +7,7 @@
 This file contains the number of first-time freshmen by state of residence, along with data on the number who graduated from high school the previous year.
 }
 
-\section{Report Period}{
+\section{Reporting}{
  Institutions with traditional academic year calendar systems (semester, quarter, trimester or  4-1-4) report their enrollment as of October 15 or the official fall reporting date of the institution.
 
  Institutions with calendar systems that differ by program or allow continuous enrollment report students that are enrolled at any time between August 1 and October 31.

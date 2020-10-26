@@ -7,14 +7,13 @@
 This file contains the number of students enrolled in the fall, by distance education status and level of student.
 }
 
-\section{Report Period}{
+\section{Reporting}{
 Institutions with traditional academic year calendar systems (semester, quarter, trimester or  4-1-4) report their enrollment as of October 15 or the official fall reporting date of the institution.
 
 Institutions with calendar systems that differ by program or allow continuous enrollment report students that are enrolled at any time between August 1 and October 31.
 }
 
 \section{Data Layout}{
-
 This file has multiple records per institution. Records are uniquely defined by the variables IPEDS ID (UNITID), and level of student (EFDELEV). Each record will contain the total students enrolled, students enrolled exclusively in distance education courses, students enrolled in some education distance education courses and students not enrolled in any distance education courses.
 
 The number of students enrolled in exclusively distance education courses are also reported by the following location categories:

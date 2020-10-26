@@ -4,7 +4,7 @@
 \title{Academic Library: AL}
 
 \description{
-The Academic Library survey became part of the Integrated Postsecondary Education Data system in collection year 2014-15. Data include characteristics of the library, collections, expenditures, and services
+The Academic Library survey became part of the Integrated Postsecondary Education Data system in collection year 2014-15. Data include characteristics of the library, collections, expenditures, and services.
 }
 
 \section{Data Availability}{

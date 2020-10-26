@@ -4,19 +4,10 @@
 \title{Fall Enrollment: EFCP}
 
 \description{
-This file contains the number of students enrolled in the fall, by race/ethnicity, gender, attendance (full- or part-time) status and level of student for selected major fields of study.  Major field of studies included are Education, Engineering, Biological Sciences/Life Sciences, Mathematics, Physical Sciences, Business Management and Administrative Services, Law, Dentistry, and Medicine.
-
-This data file contains enrollment data for 4-year institutions only.
-}
-
-\section{Report Period}{
- Institutions with traditional academic year calendar systems (semester, quarter, trimester or  4-1-4) report their enrollment as of October 15 or the official fall reporting date of the institution.
-
- Institutions with calendar systems that differ by program or allow continuous enrollment report students that are enrolled at any time between August 1 and October 31.
-}
+This file contains the number of students enrolled in the fall, by race/ethnicity, gender, attendance (full- or part-time) status and level of student for selected major fields of study.}
 
 \section{Major Field of Study}{
- These are the only fields of study required from 4-year institutions for the Office for Civil Rights.
+Major field of studies included are:
  \itemize{
     \item 13.0000 Education
     \item 14.0000 Engineering
@@ -26,8 +17,18 @@ This data file contains enrollment data for 4-year institutions only.
     \item 40.0000 Physical Sciences
     \item 51.0401 Dentistry (D.D.S., D.M.D.)
     \item 51.1201 Medicine (M.D.)
-    \item 52.0000 Business Management & Admin. Services
+    \item 52.0000 Business Management & Administrative Services
   }
+
+These are the only fields of study required from 4-year institutions for the Office for Civil Rights.
+}
+
+\section{Reporting}{
+ This data file contains enrollment data for 4-year institutions only.
+
+ Institutions with traditional academic year calendar systems (semester, quarter, trimester or  4-1-4) report their enrollment as of October 15 or the official fall reporting date of the institution.
+
+ Institutions with calendar systems that differ by program or allow continuous enrollment report students that are enrolled at any time between August 1 and October 31.
 }
 
 \section{Data Layout}{

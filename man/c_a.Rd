@@ -7,7 +7,7 @@
 This file contains the number of awards by type of program, level of award (certificate or degree), first or second major and by race/ethnicity and gender.
 }
 
-\section{Time Period}{
+\section{Reporting}{
 Data covers all awards granted between July 1 of previous year and June 30 of current year.
 }
 

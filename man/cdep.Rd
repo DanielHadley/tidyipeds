@@ -7,7 +7,7 @@
 This file contains the number of programs offered, by type of program, level of award (certificate or degree) and distance education status.
 }
 
-\section{Time Period}{
+\section{Reporting}{
 Program offerings were derived from completions data that were granted between July 1 of previous year and June 30 of current year.
 }
 

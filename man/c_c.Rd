@@ -7,7 +7,7 @@
 This file contains the number of students receiving a degree or certificate by level of award and by race/ethnicity,  gender and age categories.
 }
 
-\section{Time Period}{
+\section{Reporting}{
 Data covers all awards granted between July 1 of previous year and June 30 of current year.
 }
 
