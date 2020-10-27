@@ -5,6 +5,10 @@ download_ipeds <- function(survey, years = NULL) {
 
   if(!fs::dir_exists(fs::path(pkg_path, "ipeds_data"))) fs::dir_create(fs::path(pkg_path, "ipeds_data"))
 
+  if(!fs::dir_exists(fs::path(pkg_path, "ipeds_data", "uncleaned"))) fs::dir_create(fs::path(pkg_path, "ipeds_data", "uncleaned"))
+
+  if(!fs::dir_exists(fs::path(pkg_path, "ipeds_data", "helpfiles"))) fs::dir_create(fs::path(pkg_path, "ipeds_data", "helpfiles"))
+
   ipeds_path <- fs::path(pkg_path, "ipeds_data")
 
   update_available_ipeds()
@@ -94,7 +98,7 @@ scrape_ipeds_datacenter_files <- function() {
 
   cli::cli_alert_info("Updating local list of IPEDS Datacenter files...")
 
-  pb <- progress_bar$new(total = 100, show_after = 0)
+  pb <- progress::progress_bar$new(total = 100, show_after = 0)
   pb$tick(0)
 
   url1 <- "https://nces.ed.gov/ipeds/datacenter/login.aspx?gotoReportId=8"
