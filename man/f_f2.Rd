@@ -1,12 +1,10 @@
-\name{f_f1a}
-\alias{f_f1a}
+\name{f_f2}
+\alias{f_f2}
 
-\title{Finance: F_F1A}
+\title{Finance: F_F2}
 
 \description{
-This data file contains institutional finance data for public institutions that use accounting standards established by the Governmental Accounting Standards Board (GASB).
-
-Finance data includes institutional revenues by source, expenditures by functional categories, expenditures by natural classification categories, endowments, and assets and liabilities.
+This data file contains institutional finance data for institutions that use accounting standards established by the Financial Accounting Standards Board (FASB) .
 
 This information provides context for understanding the cost and resources of providing postsecondary education. It is used to calculate the contribution of postsecondary education to the gross national product.
 }
@@ -15,8 +13,12 @@ This information provides context for understanding the cost and resources of pr
 Beginning with fiscal year 2016 detailed expenditures by function and the natural classifications of fringe benefits, operations and maintenance of plant, depreciation and interest are no longer available.
 }
 
-\section{Release 2 - Update}{
-Release 2 contains an update to other revenues and additions (F1B23) for nondegree-granting institutions. Total other revenues and additions (F1B24)  include capital appropriations (F1B20), capital grants and contracts (F1B21), additions to permanent endowments (F1B22), and other revenues and additions (F1B23).  Degree-granting institutions report all of the above components and nondegree-granting institutions only report the total (F1B24).  Release 2 copies the value of F1B24 to other revenues and additions (F1B23) for nondegree-granting institutions, so that the detail will sum to the total for all institutions.
+\section{Institutions}{
+All private not-for-profit institutions are included in this file. There are some public institutions that use the FASB model and are also included.
+}
+
+\section{Data Layout}{
+Finance data includes institutional revenues by source, expenditures by functional categories, expenditures by natural classification categories, endowments, and assets and liabilities.
 }
 
 \section{Data Releases}{
