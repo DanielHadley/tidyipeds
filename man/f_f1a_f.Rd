@@ -1,7 +1,7 @@
-\name{f_f1a}
-\alias{f_f1a}
+\name{f_f1a_f}
+\alias{f_f1a_f}
 
-\title{Finance: F_F1A}
+\title{Finance: F_F1A_F}
 
 \description{
 This data file contains the assets, liabilities, and net assets for component units of an institution.  These component units use the FASB accounting standard.
@@ -9,7 +9,7 @@ This data file contains the assets, liabilities, and net assets for component un
 This file includes the name or names of the entities whose data is reported and the primary nature (general nature) of each component unit reported such as "fund raising/investment", "research", etc.
 }
 
-\section{Component Unit}{
+\section{Component Units}{
  The term component units applies to GASB institutions only. A component unit is a legally separate organization for which the governing board and/or management of the primary institution is financially accountable. It can be another organization for which the nature and significance of its relationship with a primary institution is such that exclusion would cause the primary institution's financial statements to be misleading or incomplete.
 }
 

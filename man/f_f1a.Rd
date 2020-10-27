@@ -233,6 +233,6 @@ including local government appropriations.}
   \item{ }{ }
   \item{ }{ }
   \item{ }{ }
-  \item{ }{ }.
+  \item{ }{ }
   }
 }
