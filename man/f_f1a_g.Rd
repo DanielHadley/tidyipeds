@@ -1,7 +1,7 @@
-\name{f_f1a}
-\alias{f_f1a}
+\name{f_f1a_g}
+\alias{f_f1a_g}
 
-\title{Finance: F_F1A}
+\title{Finance: F_F1A_G}
 
 \description{
 This data file contains the assets, liabilities, and net assets for component units of an institution.  These component units use the GASB accounting standard.
