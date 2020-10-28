@@ -35,7 +35,9 @@ time.
 
 
 \section{Demographics}{
-  Each record will contain the above data by gender and race/ethnicity. Note:
+  Each record will contain the above data by gender and race/ethnicity.
+
+  Note:
   The number of students who completed a degree/certificate within 100 percent of
   normal time is not available by race/ethnicity and gender.
 }
