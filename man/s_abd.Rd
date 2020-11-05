@@ -10,10 +10,6 @@ This file contains the number of employees on the payroll of the institution as 
 \section{Data Layout}{
 This file has multiple records per institution.  Each record is uniquely defined by the variables IPEDS ID (UNITID), and the primary function/occupation and salary categories (SABDTYPE).
 }
-All degree/certificate-seeking undergraduate students entering the institution during the 12-month period July 1, 8 years prior to current and June 30, 7 years prior to current are reported in one of the subcohorts.
-
-NOTE: For students earning multiple awards, only the highest award conferred to the student by the status point is reported.
-}
 
 \section{Institutions}{
 These data are applicable to degree-granting institutions with 15 or more full-time employees and related administrative offices.
