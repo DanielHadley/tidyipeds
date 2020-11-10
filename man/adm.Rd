@@ -19,13 +19,6 @@ Beginning with 2016, writing scores for both SAT and ACT are no longer collected
 The possible values for the admission consideration variables have changed from data prior to 2016.  "Do not know" is no longer an option and "considered but not required" was added.  See frequencies for complete listing.
 }
 
-\section{Data Releases}{
-Preliminary release data have been edited but are subject to further NCES quality control procedures. Imputed data for nonresponding institutions are not included. These data are used for First Look (Preliminary Data) publications.
-
-Provisional release data have undergone all NCES data quality control procedures. Data are imputed for nonresponding institutions. These data are used for First Look (Provisional Data) publications.
-
-Final release data include revisions to the provisional release data that have been made by institutions during the subsequent data collection year. The final release data can be used when the most up to date data are required; however, these data may not match tables from the First Look reports based on preliminary and provisional data.
-}
 
 \section{Glossary}{
 \describe{
