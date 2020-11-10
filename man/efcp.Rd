@@ -45,6 +45,11 @@ Final release data include revisions to the provisional release data that have b
 
 \section{Glossary}{
 \describe{
-  \item{Classification of instrucional Program (CIP) code}{A six-digit code in the form xx.xxxx that identifies instructional  program specialties within educational institutions.}
+
+\item{Attendance status of student [SECTION]}{Defines full and part-time status of student}
+
+\item{Classification of instrucional Program (CIP) code}{A six-digit code in the form xx.xxxx that identifies instructional  program specialties within educational institutions.}
+
+\item{Credit}{Recognition of attendance or performance in an instructional activity (course or program) that can be applied by a recipient toward the requirements for a degree, diploma, certificate, or other formal award.}
   }
 }
