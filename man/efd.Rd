@@ -6,6 +6,8 @@
 \description{
 This file contains data on the total entering class, first-year retention rates
 and the student-to-faculty ratio.
+
+\figure{ipeds-ef.png}
 }
 \section{Total Entering Class}{
 The total entering class is the number of
