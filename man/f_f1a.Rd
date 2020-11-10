@@ -19,13 +19,6 @@ Beginning with fiscal year 2016 detailed expenditures by function and the natura
 Release 2 contains an update to other revenues and additions (F1B23) for nondegree-granting institutions. Total other revenues and additions (F1B24)  include capital appropriations (F1B20), capital grants and contracts (F1B21), additions to permanent endowments (F1B22), and other revenues and additions (F1B23).  Degree-granting institutions report all of the above components and nondegree-granting institutions only report the total (F1B24).  Release 2 copies the value of F1B24 to other revenues and additions (F1B23) for nondegree-granting institutions, so that the detail will sum to the total for all institutions.
 }
 
-\section{Data Releases}{
-Preliminary release data have been edited but are subject to further NCES quality control procedures. Imputed data for nonresponding institutions are not included. These data are used for First Look (Preliminary Data) publications.
-
-Provisional release data have undergone all NCES data quality control procedures. Data are imputed for nonresponding institutions. These data are used for First Look (Provisional Data) publications.
-
-Final release data include revisions to the provisional release data that have been made by institutions during the subsequent data collection year. The final release data can be used when the most up to date data are required; however, these data may not match tables from the First Look reports based on preliminary and provisional data.
-}
 
 \section{Glossary}{
 \describe{

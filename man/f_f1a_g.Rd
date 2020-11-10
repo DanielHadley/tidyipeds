@@ -17,15 +17,6 @@ The term component units applies to GASB institutions only. A component unit is 
 Financial data for component units are available for fiscal years 2002 through 2007.
 }
 
-\section{Data Releases}{
-Preliminary release data have been edited but are subject to further NCES quality control procedures. Imputed data for nonresponding institutions are not included. These data are used for First Look (Preliminary Data) publications.
-
-Provisional release data have undergone all NCES data quality control procedures. Data are imputed for nonresponding institutions. These data are used for First Look (Provisional Data) publications.
-
-Final release data include revisions to the provisional release data that have been made by institutions during the subsequent data collection year. The final release data can be used when the most up to date data are required; however, these data may not match tables from the First Look reports based on preliminary and provisional data.
-}
-
-
 \section{Glossary}{
 \describe{
   \item{Form ID }{
