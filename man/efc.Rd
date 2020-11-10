@@ -21,18 +21,16 @@ This file has multiple records per institution.  Records are uniquely defined by
 Submission of enrollment of first-time undergraduate students by residency is mandatory in even-numbered years and optional in odd-numbered years. Do not use these data in odd-numbered years to produce national or state estimates as data will not be available from all institutions. Data in optional years are provided to allow users to compare institutional level data among reporting institutions.
 }
 
-\section{Data Releases}{
-Preliminary release data have been edited but are subject to further NCES quality control procedures. Imputed data for nonresponding institutions are not included. These data are used for First Look (Preliminary Data) publications.
-
-Provisional release data have undergone all NCES data quality control procedures. Data are imputed for nonresponding institutions. These data are used for First Look (Provisional Data) publications.
-
-Final release data include revisions to the provisional release data that have been made by institutions during the subsequent data collection year. The final release data can be used when the most up to date data are required; however, these data may not match tables from the First Look reports based on preliminary and provisional data.
-}
 
 \section{Glossary}{
 \describe{
-  \item{First-time student (undergraduate)}{
-  A student who has no prior postsecondary experience (except as noted below) attending any institution for the first time at the undergraduate level. This includes students enrolled in academic or occupational programs. It also includes students enrolled in the fall term who attended college for the first time in the prior summer term, and students who entered with advanced standing (college credits earned before graduation from high school).
-  }
+
+\item{Degree/Certificate-seeking students}{Students enrolled in courses for credit who are recognized by the institution as seeking a degree or other formal award. At the undergraduate level, this is intended to include students enrolled in vocational or occupational programs.}
+
+\item{First-time student(Undergraduate)}{A student attending any institution for the first time at the undergraduate level. Includes students enrolled in academic or occupational programs. Also includes students enrolled in the fall term who attended college for the first time in the prior summer term, and students who entered with advanced standing (college credits earned before graduation from high school). }
+
+\item{State of residence}{A person’s permanent address as determined by such evidence as a driver’s license or voter registration. For entering freshmen, state of residence may be the legal state of residence of a parent or guardian.}
+
+\item{Undergraduate}{A student enrolled in a 4- or 5-year bachelor's degree program, an associate's degree program, or a vocational or technical program below the baccalaureate. }
   }
 }
