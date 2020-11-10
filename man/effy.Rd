@@ -13,12 +13,6 @@ These enrollment data are particularly valuable for institutions that use non-tr
  Each record is uniquely defined by the variables IPEDS ID (UNITID), and the level of enrollment (EFFYLEV). Each record will contain the total head count for men and women, and the total headcount for men and women for all nine race/ethnicity categories.
 }
 
-\section{Data Releases}{
-Provisional release data have undergone all NCES data quality control procedures. Data are imputed for nonresponding institutions. These data are used for First Look (Provisional Data) publications.
-
-Final release data include revisions to the provisional release data that have been made by institutions during the subsequent data collection year. The final release data can be used when the most up to date data are required; however, these data may not match tables from the First Look reports based on provisional data.
-}
-
 \section{Glossary}{
 \describe{
   \item{Level of study}{
