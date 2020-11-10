@@ -25,23 +25,23 @@ The number of students enrolled in exclusively distance education courses are al
     }
 }
 
-\section{Data Releases}{
-Preliminary release data have been edited but are subject to further NCES quality control procedures. Imputed data for nonresponding institutions are not included. These data are used for First Look (Preliminary Data) publications.
-
-Provisional release data have undergone all NCES data quality control procedures. Data are imputed for nonresponding institutions. These data are used for First Look (Provisional Data) publications.
-
-Final release data include revisions to the provisional release data that have been made by institutions during the subsequent data collection year. The final release data can be used when the most up to date data are required; however, these data may not match tables from the First Look reports based on preliminary and provisional data.
-}
-
 \section{Glossary}{
 \describe{
-  \item{Distance education course}{
-  A course in which the instructional content is delivered exclusively via distance education. Requirements for coming to campus for orientation, testing, or academic support services do not exclude a course from being classified as distance education.
-  }
-  \item{Distance education}{
-   Education that uses one or more technologies to deliver instruction to students who are separated from the instructor and to support regular and substantive interaction between the students and the instructor synchronously or asynchronously.
 
-   Technologies used for instruction may include the following: Internet; one-way and two-way transmissions through open broadcasts, closed circuit, cable, microwave, broadband lines, fiber optics, satellite or wireless communication devices; audio conferencing; and video cassette, DVDs, and CD-ROMs, if the cassette, DVDs, and CD-ROMs are used in a course in conjunction with the technologies listed above.
-  }
+\item{Credit}{Recognition of attendance or performance in an instructional activity (course or program) that can be applied by a recipient toward the requirements for a degree, diploma, certificate, or other formal award.}
+
+\item{Degree/certificate-seeking students}{Students enrolled in courses for credit and recognized by the institution as seeking a degree, certificate, or other formal award. High school students also enrolled in postsecondary courses for credit are not considered degree/certificate-seeking. }
+
+\item{Distance education}{Education that uses one or more technologies to deliver instruction to students who are separated from the instructor and to support regular and substantive interaction between the students and the instructor synchronously or asynchronously.
+
+Technologies used for instruction may include the following: Internet; one-way and two-way transmissions through open broadcasts, closed circuit, cable, microwave, broadband lines, fiber optics, satellite or wireless communication devices; audio conferencing; and video cassette, DVDs, and CD-ROMs, if the cassette, DVDs, and CD-ROMs are used in a course in conjunction with the technologies listed above.}
+
+\item{Distance education course}{A course in which the instructional content is delivered exclusively via distance education.  Requirements for coming to campus for orientation, testing, or academic support services do not exclude a course from being classified as distance education.  }
+
+\item{Graduate student}{A student who holds a bachelor's degree or above and is taking courses at the postbaccalaureate level. These students may or may not be enrolled in graduate programs.}
+
+\item{Level of student [EFDELEV]}{Level and degree-seeking/non degree-seeking status of student  - This variable identifies the level of enrollment data for the institution.  Enrollment counts are available by level of student (undergraduate or graduate).  Undergraduate enrollments are disaggregated by degree-seeking and non-degree seeking status.}
+
+\item{Undergraduate}{A student enrolled in a 4- or 5-year bachelor's degree program, an associate's degree program, or a vocational or technical program below the baccalaureate. }
   }
 }
