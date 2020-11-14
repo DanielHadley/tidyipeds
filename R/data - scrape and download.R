@@ -185,7 +185,7 @@ scrape_ipeds_datacenter_files <- function() {
 #' Update local list of available data center files
 #' @description
 #' \lifecycle{experimental}
-#' This function is primarily internal. It is used to update (or download if it does not exist) a local copy of the data files available from IPEDS data center.  If the local copy is less than 1 month old, it does not update as scraping the data center is time consuming and new files are added only a few times a year.  This behavior can be circumvented by using \code{`force = TRUE`}.  If the local copy is over 1 month old, it is updated.
+#' This function is primarily internal. It is used to update (or download if it does not exist) a local index of the data files available from IPEDS data center (but not the data itself).  If the local index is less than 1 month old, it does not update as scraping the data center is time consuming and new files are added only a few times a year.  This behavior can be circumvented by using \code{`force = TRUE`}.  If the local copy is over 1 month old, it is updated.
 #' @param force Logical indicating whether to force an update if local copy is less than 1 month old. Defaults to FALSE
 #' @examples
 #' \dontrun{
@@ -268,8 +268,8 @@ compare_ipeds_scrape <- function(old, new) {
 }
 
 
-
-
+#TODO: If comparison yields new data, add an option to update all, update any currently downloaded surveys that match the update, or none.
+# If they don't do it now, there should be an update function that will do it at any point in the future (or only in session?)  We need to keep track of when the data and the index or not in sync with respect to provisional/rv data files.  Perhaps a flag somewhere that indicates this for files and then can be checked against the datascenter_scrape.rds.
 
 
 
