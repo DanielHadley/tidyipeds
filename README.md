@@ -12,6 +12,11 @@ and the Urban Institute’s Education Data API.
 
 \=======================
 
+<!-- badges: start -->
+
+[![R-CMD-check](https://github.com/Sorenson-Impact/tidyipeds/workflows/R-CMD-check/badge.svg)](https://github.com/Sorenson-Impact/tidyipeds/actions)
+<!-- badges: end -->
+
 # This package is in early development
 
 This package is not currently functional as it is in the early stages of
