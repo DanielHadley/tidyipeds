@@ -1,3 +1,4 @@
+# This function checks if an index update is needed, and then downloads the specified files and helpfiles.
 
 download_ipeds <- function(survey, years = NULL) {
 
@@ -11,7 +12,7 @@ download_ipeds <- function(survey, years = NULL) {
 
   ipeds_path <- fs::path(pkg_path, "ipeds_data")
 
-  update_available_ipeds()
+  update_available_ipeds() #This checks if an update is needed, then calls the scrape function if so.
 
   ipeds <- readr::read_rds(fs::path(ipeds_path, "datacenter_scrape.rds"))
 
@@ -72,7 +73,7 @@ download_ipeds <- function(survey, years = NULL) {
 
       cat("\n", crayon::red("Writing compressed file:", rds_name, "\n"))
 
-      csv %>% readr::write_rds(fs::path(ipeds_path, rds_name), compress = "gz")
+      csv %>% readr::write_rds(fs::path(ipeds_path, "uncleaned", rds_name), compress = "gz")
 
       cat("\n", crayon::green("Adding help file...", "\n"))
 
@@ -166,6 +167,7 @@ scrape_ipeds_datacenter_files <- function() {
       title = stringr::str_remove_all(title, "\\r")
     ) %>%
     dplyr::mutate(rv_title = stringr::str_detect(title, "revised")) %>%
+    dplyr::mutate(revision_date = stringr::str_extract(title, "\\(revised .*\\)$"))
     dplyr::mutate(title = stringr::str_remove(title, "\\s?\\(?revised.*\\)?$")) %>%
     dplyr::mutate(title = stringr::str_squish(title)) %>%
     dplyr::filter(!stringr::str_detect(data_file, "FLAGS")) %>%
@@ -185,7 +187,7 @@ scrape_ipeds_datacenter_files <- function() {
 #' Update local list of available data center files
 #' @description
 #' \lifecycle{experimental}
-#' This function is primarily internal. It is used to update (or download if it does not exist) a local index of the data files available from IPEDS data center (but not the data itself).  If the local index is less than 1 month old, it does not update as scraping the data center is time consuming and new files are added only a few times a year.  This behavior can be circumvented by using \code{`force = TRUE`}.  If the local copy is over 1 month old, it is updated.
+#' This function is primarily internal. It is used to update (or download if it does not exist) a local index of the data files available from IPEDS data center (but not the data itself).  If the local index is less than 1 month old, it does not update as scraping the data center is time consuming and new files are added only a few times a year.  This behavior can be circumvented by using \code{`force = TRUE`}.  If the local index is over 1 month old, it is updated automatically.
 #' @param force Logical indicating whether to force an update if local copy is less than 1 month old. Defaults to FALSE
 #' @examples
 #' \dontrun{
@@ -240,7 +242,7 @@ update_available_ipeds <- function(force = FALSE) {
 
 compare_ipeds_scrape <- function(old, new) {
 
-  ipeds_diff <- anti_join(new, old, by = c("year", "survey", "title", "data_file", "rv_title"))
+  ipeds_diff <- anti_join(new, old, by = c("year", "survey", "title", "data_file", "rv_title", "revision_date"))
 
   if(nrow(ipeds_diff) == 0) return(cli::cli_alert_info("The locally stored list of available IPEDS data files matches the online data center. No new surveys or survey revisions have been added.", wrap = T))
 
@@ -257,7 +259,7 @@ compare_ipeds_scrape <- function(old, new) {
     cli::cli_alert_info(cli::rule(left = "The following surveys have been updated to include revised files", line_col = "green"))
     ipeds_diff %>%
       dplyr::filter(rv_title) %>%
-      select(year, survey, title, data_file) %>%
+      select(year, survey, title, data_file, revision_date) %>%
       print()
     cli::cat_line()
   }

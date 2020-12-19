@@ -11,7 +11,7 @@ update_available_ipeds(force = FALSE)
 }
 \description{
 \lifecycle{experimental}
-This function is primarily internal. It is used to update (or download if it does not exist) a local copy of the data files available from IPEDS data center.  If the local copy is less than 1 month old, it does not update as scraping the data center is time consuming and new files are added only a few times a year.  This behavior can be circumvented by using \code{`force = TRUE`}.  If the local copy is over 1 month old, it is updated.
+This function is primarily internal. It is used to update (or download if it does not exist) a local index of the data files available from IPEDS data center (but not the data itself).  If the local index is less than 1 month old, it does not update as scraping the data center is time consuming and new files are added only a few times a year.  This behavior can be circumvented by using \code{`force = TRUE`}.  If the local index is over 1 month old, it is updated automatically.
 }
 \examples{
 \dontrun{
